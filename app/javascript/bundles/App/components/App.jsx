@@ -17,6 +17,13 @@ export default class App extends React.Component {
     this.state = { name: this.props.name };
   }
 
+  componentDidMount() {
+    window.fetch('/api/projects')
+      .then(response => response.json())
+      .then(json => console.log(json))
+      .catch(error => console.log(error));
+  }
+
   updateName = (name) => {
     this.setState({ name });
   };
