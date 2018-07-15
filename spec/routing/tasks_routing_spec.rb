@@ -4,35 +4,35 @@ RSpec.describe TasksController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do
-      expect(:get => "/api/tasks").to route_to("tasks#index")
+      expect(:get => "/api/projects/1/tasks").to route_to("tasks#index", :project_id => "1")
     end
 
     it "routes to #new" do
-      expect(:get => "/api/tasks/new").to route_to("tasks#new")
+      expect(:get => "/api/projects/1/tasks/new").to route_to("tasks#new", :project_id => "1")
     end
 
     it "routes to #show" do
-      expect(:get => "/api/tasks/1").to route_to("tasks#show", :id => "1")
+      expect(:get => "/api/projects/1/tasks/1").to route_to("tasks#show", :project_id => "1", :id => "1")
     end
 
     it "routes to #edit" do
-      expect(:get => "/api/tasks/1/edit").to route_to("tasks#edit", :id => "1")
+      expect(:get => "/api/projects/1/tasks/1/edit").to route_to("tasks#edit", :project_id => "1", :id => "1")
     end
 
     it "routes to #create" do
-      expect(:post => "/api/tasks").to route_to("tasks#create")
+      expect(:post => "/api/projects/1/tasks").to route_to("tasks#create", :project_id => "1")
     end
 
     it "routes to #update via PUT" do
-      expect(:put => "/api/tasks/1").to route_to("tasks#update", :id => "1")
+      expect(:put => "/api/projects/1/tasks/1").to route_to("tasks#update", :project_id => "1", :id => "1")
     end
 
     it "routes to #update via PATCH" do
-      expect(:patch => "/api/tasks/1").to route_to("tasks#update", :id => "1")
+      expect(:patch => "/api/projects/1/tasks/1").to route_to("tasks#update", :project_id => "1", :id => "1")
     end
 
     it "routes to #destroy" do
-      expect(:delete => "/api/tasks/1").to route_to("tasks#destroy", :id => "1")
+      expect(:delete => "/api/projects/1/tasks/1").to route_to("tasks#destroy", :project_id => "1", :id => "1")
     end
 
   end

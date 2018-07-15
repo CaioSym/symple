@@ -18,7 +18,10 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    window.fetch('/api/projects')
+    window
+      .fetch('/api/projects', {
+        credentials: 'same-origin'
+      })
       .then(response => response.json())
       .then(json => console.log(json))
       .catch(error => console.log(error));
