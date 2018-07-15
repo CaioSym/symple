@@ -38,11 +38,11 @@ gem 'jbuilder', '~> 2.5'
 # Better templating
 gem 'slim-rails'
 
-# Auth/Users
-gem 'devise'
-
 # CMS
 gem 'activeadmin'
+
+# Auth/Users
+gem 'devise'
 
 # Server Side Rendering
 gem 'mini_racer'
