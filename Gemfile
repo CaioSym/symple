@@ -45,6 +45,7 @@ gem 'devise'
 gem 'activeadmin'
 
 # Server Side Rendering
+gem 'mini_racer'
 gem 'react_on_rails'
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -77,3 +78,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'mini_racer', platforms: :ruby
