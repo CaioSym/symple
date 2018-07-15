@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default class HelloWorld extends React.Component {
+export default class App extends React.Component {
   static propTypes = {
     name: PropTypes.string.isRequired, // this is passed from the Rails view
   };
@@ -24,9 +24,9 @@ export default class HelloWorld extends React.Component {
   render() {
     return (
       <div>
-        <h3>
+        <h2>
           Hello, {this.state.name}!
-        </h3>
+        </h2>
         <hr />
         <form >
           <label htmlFor="name">
