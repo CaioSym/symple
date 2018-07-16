@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import ProjectsList from './components/Project/ProjectsList'
+import {createProject, fetchTasks} from './services/ProjectsService'
 
 export default class App extends React.Component {
   static propTypes = {
@@ -18,18 +20,27 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    window
-      .fetch('/api/projects', {
-        credentials: 'same-origin'
-      })
-      .then(response => response.json())
-      .then(json => console.log(json))
-      .catch(error => console.log(error));
+    // fetchProjects()
+    //   .then(json => {console.log(json); return json;})
+    //   .then(projects => fetchTasks(projects[0].id))
+    //   .then(json => console.log(json))
+    //   .catch(error => console.log(error));
   }
 
   updateName = (name) => {
     this.setState({ name });
   };
+
+  showProjects = (projectId) => {
+    console.log(projectId)
+    fetchTasks(projectId)
+      .then(x => console.log(x))
+  };
+
+  createNewProject = () => {
+    createProject({title: "Lol", description: "HUEUEHUE"})
+      .then(x => console.log(x))
+  };  
 
   render() {
     return (
@@ -49,6 +60,15 @@ export default class App extends React.Component {
             onChange={(e) => this.updateName(e.target.value)}
           />
         </form>
+
+        <ProjectsList projects={this.props.projects}
+                      onViewProject={(pId) => this.showProjects(pId)}
+                      onEditProject={(pId) => this.showProjects(pId)}
+                      onDeleteProject={(pId) => this.showProjects(pId)} />
+
+        <button onClick={this.createNewProject}>
+          + Create a new project!
+        </button>
       </div>
     );
   }

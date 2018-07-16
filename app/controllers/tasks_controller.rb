@@ -1,7 +1,7 @@
 class TasksController < ApiController
 
   def index
-    project = nil
+    project = Project.find_by(id: params[:project_id])
     @tasks = Task.where(project: project)
     render json: @tasks.to_json
   end
