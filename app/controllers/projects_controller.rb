@@ -25,10 +25,10 @@ class ProjectsController < ApiController
   end
 
   def destroy
-    project = Project.where(user: current_user, id: params[:project_id])
+    project = Project.find_by(user: current_user, id: params[:id])
     if project
-      Project.destroy!(project)
-      render json: { message: "removed" }, status: :ok
+      Project.destroy(project.id)
+      render json: { message: "{}" }, status: :ok
     else
       render json: { code: 404 }
     end
@@ -39,8 +39,6 @@ class ProjectsController < ApiController
   def project_params
     params.require(:project).permit(:title, :description)
   end
-
-
 
 end
 
