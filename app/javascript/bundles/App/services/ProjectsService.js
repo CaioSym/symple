@@ -59,8 +59,8 @@ export const updateProject = (project) => {
   return fetchPut(`/api/projects/${project.id}`, project)
 }
 
-export const deleteProject = () => {
-  return fetchDelete(`/api/project/${project.id}`)
+export const deleteProject = (projectId) => {
+  return fetchDelete(`/api/projects/${projectId}`)
 }
 
 export const fetchTasks = (projectId) => {

@@ -6,25 +6,14 @@ export default class App extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    onSubmit: PropTypes.string.isRequired,
+    onTitleChange: PropTypes.func,
+    onDescriptionChange: PropTypes.func,
+    onSubmit: PropTypes.func,
   };
 
   constructor(props) {
     super(props);
-
-    this.state = { 
-      title: this.props.title,
-      description: this.props.description
-    };
   }
-
-  updateTitle = (title) => {
-    this.setState({ title });
-  };
-
-  updateDescription = (description) => {
-    this.setState({ description });
-  };
 
   render() {
     return (

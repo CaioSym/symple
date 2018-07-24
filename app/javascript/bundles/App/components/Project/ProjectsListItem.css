@@ -1,0 +1,21 @@
+.ProjectsListItem__Card {
+  width: 18rem;
+  margin: 5px
+}
+
+
+.ProjectsListItem__CardTitle {
+  max-height: 30px;
+  height: 30px;
+  overflow: hidden;
+}
+
+.ProjectsListItem__CardText {
+  max-height: 100px;
+  overflow: hidden;
+}
+
+.ProjectsListItem__Button {
+  margin-right: 3px
+}
+
