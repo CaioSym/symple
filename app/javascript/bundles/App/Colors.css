@@ -1,0 +1,35 @@
+
+/*Oranges*/
+@value portland-orange: #F46036;
+@value orange-red: #FF430F;
+
+/*Aquamarines*/
+@value vergigris: #44BBA4;
+@value eucalyptus: #4DD6BA;
+
+/* Yellows */
+@value meat-brown: #E7BB41;
+
+/* Grayscales */
+@value platinum: #E7E5DF;
+@value light-gray: #D3D0CB;
+@value black-olive: #393E41;
+
+/* Theme */
+
+@value nav-bar-color: black-olive;
+@value background-primary-color: light-gray;
+@value card-primary-color: platinum;
+
+@value button-primary-color: vergigris;
+@value button-primary-highlight-color: eucalyptus;
+
+@value button-secondary-color: black-olive;
+@value button-secondary-highlight-color: light-gray;
+
+@value button-danger-color: portland-orange;
+@value button-danger-highlight-color: orange-red;
+
+
+@value text-color: black-olive;
+@value text-reverse-color: platinum;

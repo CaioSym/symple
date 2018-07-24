@@ -1,0 +1,5 @@
+@value background-primary-color from '../../Colors.css';
+
+.ProjectsListContainer {
+  background-color: primary-background-color;
+}

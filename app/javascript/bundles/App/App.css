@@ -1,0 +1,48 @@
+@value (
+  text-color,
+  text-reverse-color,
+  button-primary-color,
+  button-primary-highlight-color,
+  button-secondary-color,
+  button-secondary-highlight-color,
+  button-danger-color,
+  button-danger-highlight-color
+) from './Colors.css';
+
+.AppContainer {
+  color: text-color;
+}
+
+.AlignRight {
+  position: absolute;
+  right: 0px;
+}
+
+.AppButton {
+  border-width: 0px;
+  color: text-reverse-color;
+}
+
+.AppButton--Primary {
+  background-color: button-primary-color;
+}
+
+.AppButton--Primary:hover {
+  background-color: button-primary-highlight-color;
+}
+
+.AppButton--Secondary {
+  background-color: button-secondary-color;
+}
+
+.AppButton--Secondary:hover {
+  background-color: button-secondary-highlight-color;
+}
+
+.AppButton--Danger {
+  background-color: button-danger-color;
+}
+
+.AppButton--Danger:hover {
+  background-color: button-danger-highlight-color;
+}

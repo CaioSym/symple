@@ -1,0 +1,22 @@
+@value nav-bar-color, text-reverse-color from '../../Colors.css';
+
+.NavBarContainer {
+  background-color: nav-bar-color;
+  color: text-reverse-color;
+}
+
+.NavBarContainer a:link {
+  color: text-reverse-color;
+}
+
+.NavBarContainer a:visited {
+  color: text-reverse-color;
+}
+
+.NavBarContainer a:hover {
+  color: text-reverse-color;
+}
+
+.NavBarContainer a:active {
+  color: text-reverse-color;
+}
