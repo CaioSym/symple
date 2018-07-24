@@ -57,6 +57,14 @@ export function createProject(project) {
   }
 }
 
+export function updateProject(project) {
+  return function (dispatch, getState) {
+    ProjectsService.updateProject(project)
+      .then(project => dispatch(setProject(project)))
+      .catch(e => console.log(e))
+  }
+}
+
 export function deleteProject(projectId) {
   return function (dispatch, getState) {
     ProjectsService.deleteProject(projectId)

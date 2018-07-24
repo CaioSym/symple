@@ -7,6 +7,13 @@ class MainController < ApplicationController
 
   def index
     projects = Project.where(user: current_user)
-    @app_props = { projects: projects }
+    @app_props = { 
+      projects: projects,
+      screens: {
+        projects: {
+          form: nil
+        }
+      }
+    }
   end
 end

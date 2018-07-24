@@ -21,7 +21,9 @@ export const projectsReducer = (prevState = INITIAL_STATE, action) => {
       project = mapProject(action.payload.project)
       projectIndex = prevState.findIndex(p => p.id === project.id)
       if (projectIndex >= 0 ) {
-        return prevState.slice().splice(projectIndex, 1)
+        let newProjects = prevState.slice()
+        newProjects.splice(projectIndex, 1, action.payload.project)
+        return newProjects
       } else {
         return prevState
       }

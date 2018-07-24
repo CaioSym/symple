@@ -1,11 +1,13 @@
 import { connect } from 'react-redux'
 
-import * as Actions from '../../reducers/Project/actions'
+import * as ProjectActions from '../../reducers/Project/actions'
+import * as ProjectScreeenActions from '../../reducers/ProjectsScreen/actions'
 import ProjectsScreenView from './ProjectsScreenView'
 
 const mapStateToProps = state => {
   return {
-    projects: state.projects,
+    form: state.screens.projects.form,
+    projects: state.projects
   }
 }
 
@@ -14,12 +16,25 @@ const mapDispatchToProps = dispatch => {
     onShowProject: (projectId) => {
     },
     onEditProject: (project) => {
+      dispatch(ProjectScreeenActions.openUpdateForm(project))
     },
     onDeleteProject: (projectId) => {
-      dispatch(Actions.deleteProject(projectId))
+      dispatch(ProjectActions.deleteProject(projectId))
     },
     onCreateProject: (project) => {
-      dispatch(Actions.createProject({title: "AAA", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"}))
+      dispatch(ProjectScreeenActions.openCreateForm())
+    },
+    onProjectFormEditTite: (title) => {
+      dispatch(ProjectScreeenActions.setFormTitle(title))
+    },
+    onProjectFormEditDescription: (description) => {
+      dispatch(ProjectScreeenActions.setFormDescription(description))
+    },
+    onProjectFormSubmit: (project) => {
+      dispatch(ProjectScreeenActions.submitForm())
+    },
+    onProjectFormDismiss: (project) => {
+      dispatch(ProjectScreeenActions.closeForm())
     }
   }  
 }
