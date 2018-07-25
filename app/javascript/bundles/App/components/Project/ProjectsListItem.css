@@ -1,6 +1,5 @@
 @value card-primary-color from '../../Colors.css';
 
-
 .ProjectsListItem__Card {
   width: 18rem;
   margin: 5px;
