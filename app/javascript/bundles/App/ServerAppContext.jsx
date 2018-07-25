@@ -30,7 +30,7 @@ const initStore = initialState => {
 const AppContext = (props, _railsContext) => {
   return (
     <Provider store={initStore(props)}>
-       <StaticRouter location='/'
+       <StaticRouter location={_railsContext.location}
                      context={{}}>
           <App/>
         </StaticRouter>

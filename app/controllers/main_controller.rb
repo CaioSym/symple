@@ -6,11 +6,27 @@ class MainController < ApplicationController
   layout "main"
 
   def index
-    projects = Project.where(user: current_user)
-    @app_props = { 
-      projects: projects,
+    app_props[:projects] = Project.where(user: current_user)
+  end
+
+  def projects
+    app_props[:projects] = Project.where(user: current_user)
+    app_props[:tasks][params[:project_id]] = Task.where(project_id: params[:project_id])
+    render "index"
+  end
+
+  private
+
+  def app_props
+    return @app_props if @app_props != nil
+    @app_props = {
+      projects: [],
+      tasks: {},
       screens: {
         projects: {
+          form: nil
+        },
+        tasks: {
           form: nil
         }
       }
