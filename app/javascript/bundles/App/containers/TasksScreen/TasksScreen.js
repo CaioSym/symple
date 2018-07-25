@@ -68,10 +68,11 @@ const mapDispatchToProps = dispatch => {
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
   let project = stateProps.projectTitle.find(p => p.id === ownProps.projectId)
-  console.log(project)
+  let tasks = stateProps.tasks[ownProps.projectId] || []
+
   let stateOverides = {
     projectTitle: project ? project.title : "",
-    tasks: stateProps.tasks[ownProps.projectId] || []
+    tasks: tasks.sort((a, b) => a.id - b.id)
   }
   return Object.assign({}, ownProps, stateProps, dispatchProps, stateOverides)
 }

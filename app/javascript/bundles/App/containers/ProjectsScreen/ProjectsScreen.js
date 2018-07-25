@@ -18,7 +18,7 @@ const mapForm = form => {
 const mapStateToProps = state => {
   return {
     form: mapForm(state.screens.projects.form),
-    projects: state.projects
+    projects: state.projects.sort((a, b) => a.id - b.id)
   }
 }
 

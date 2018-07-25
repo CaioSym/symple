@@ -17,14 +17,18 @@ import { Jumbotron,
 import './TasksScreenView.css'
 import TasksList from '../../components/Task/TasksList'
 
-const renderTasksList = (props, title, tasks) => {
+const renderTasksList = (props, title, priority, tasks) => {
   return (
     <div key={title} className="TasksScreen__TracksItem">
       <h4>{title}</h4>
-      <Button className='AppButton AppButton--Primary'  
-              onClick={() => props.onCreateTask(props.projectId, priority)}>
-        + Create a new task!
-      </Button>
+      {
+        priority > 0 ?
+          <Button className='AppButton AppButton--Primary'  
+                  onClick={() => props.onCreateTask(props.projectId, priority)}>
+            + Create a new task!
+          </Button>
+        : null
+      }
       <hr/>
       <TasksList tasks={tasks}
                  onViewTask={(taskId) => props.onShowTask(props.projectId, taskId)}
@@ -116,9 +120,9 @@ const TasksScreenView = (props) => {
         <div className="TasksScreen__TracksContainer">
           { 
             [1,2,3,4,5]
-              .map(n => renderTasksList(props, `Priority #${n}`, props.tasks.filter(t => t.priority === n && !t.completed)))
+              .map(n => renderTasksList(props, `Priority #${n}`, n, props.tasks.filter(t => t.priority === n && !t.completed)))
           }
-          { renderTasksList(props, 'Completed', props.tasks.filter(t => t.completed)) }
+          { renderTasksList(props, 'Completed', 0, props.tasks.filter(t => t.completed)) }
         </div>
 
         <hr/>
