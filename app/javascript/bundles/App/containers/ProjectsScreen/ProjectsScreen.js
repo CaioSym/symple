@@ -1,12 +1,23 @@
 import { connect } from 'react-redux'
 
 import * as ProjectActions from '../../reducers/Project/actions'
+import { openTasksScreen } from '../../reducers/TasksScreen/actions'
 import * as ProjectScreeenActions from '../../reducers/ProjectsScreen/actions'
+import { FormTypes } from '../../reducers/ProjectsScreen/constants'
 import ProjectsScreenView from './ProjectsScreenView'
+
+const mapForm = form => {
+  if (!form) { return null }
+  let title = "New Project"
+  if (form.type !== FormTypes.CREATE) {
+    title = "Edit Project"
+  }
+  return Object.assign({}, form, {title: title})
+}
 
 const mapStateToProps = state => {
   return {
-    form: state.screens.projects.form,
+    form: mapForm(state.screens.projects.form),
     projects: state.projects
   }
 }
@@ -14,6 +25,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {    
     onShowProject: (projectId) => {
+      dispatch(openTasksScreen(projectId))
     },
     onEditProject: (project) => {
       dispatch(ProjectScreeenActions.openUpdateForm(project))
@@ -21,7 +33,7 @@ const mapDispatchToProps = dispatch => {
     onDeleteProject: (projectId) => {
       dispatch(ProjectActions.deleteProject(projectId))
     },
-    onCreateProject: (project) => {
+    onCreateProject: () => {
       dispatch(ProjectScreeenActions.openCreateForm())
     },
     onProjectFormEditTite: (title) => {
@@ -30,10 +42,10 @@ const mapDispatchToProps = dispatch => {
     onProjectFormEditDescription: (description) => {
       dispatch(ProjectScreeenActions.setFormDescription(description))
     },
-    onProjectFormSubmit: (project) => {
+    onProjectFormSubmit: () => {
       dispatch(ProjectScreeenActions.submitForm())
     },
-    onProjectFormDismiss: (project) => {
+    onProjectFormDismiss: () => {
       dispatch(ProjectScreeenActions.closeForm())
     }
   }  

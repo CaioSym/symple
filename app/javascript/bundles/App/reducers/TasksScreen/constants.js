@@ -1,0 +1,13 @@
+
+const SCOPE = "TASKS_SCREEN"
+
+export const ActionTypes = {
+  OPEN_FORM: `${SCOPE}/ACTION_OPEN_FORM`,
+  UPDATE_FORM: `${SCOPE}/ACTION_UPDATE_FORM`,
+  CLOSE_FORM: `${SCOPE}/ACTION_CLOSE_FORM`
+}
+
+export const FormTypes = {
+  CREATE: `${SCOPE}/FORM_TYPE_CREATE`,
+  EDIT: `${SCOPE}/FORM_TYPE_EDIT`
+}

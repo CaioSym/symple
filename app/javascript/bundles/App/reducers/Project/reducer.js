@@ -6,8 +6,7 @@ const mapProject = project => {
   return {
     id: project.id,
     title: project.title || "",
-    description: project.description || "",
-    tasks: []
+    description: project.description || ""
   }
 }
 
@@ -28,8 +27,6 @@ export const projectsReducer = (prevState = INITIAL_STATE, action) => {
         return prevState
       }
     case ActionTypes.ADD_PROJECT:
-      console.log("AAAA")
-      console.log(action.payload.project)
       project = mapProject(action.payload.project)
       if (prevState.find(p => p.id === project.id)) {
         return prevState

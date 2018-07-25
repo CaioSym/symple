@@ -4,9 +4,9 @@ import React from 'react';
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
 
-import './ProjectsListItem.css'
+import './TasksListItem.css'
 
-class ProjectsListItem extends React.Component {
+class TasksListItem extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
@@ -18,17 +18,17 @@ class ProjectsListItem extends React.Component {
   render() {
     return (
 
-      <Card className='ProjectsListItem__Card'>
+      <Card className='TasksListItem__Card'>
         <CardBody>
-          <CardTitle className='ProjectsListItem__CardTitle'>{this.props.title}</CardTitle>
-          <CardText className='ProjectsListItem__CardText'>{this.props.description}</CardText>
-          <div className='ProjectsListItem__CardBottom'>
-            <div className='ProjectsListItem__CardActions'>
-              <Button className='AppButton AppButton--Primary ProjectsListItem__Button' 
+          <CardTitle className='TasksListItem__CardTitle'>{this.props.title}</CardTitle>
+          <CardText className='TasksListItem__CardText'>{this.props.description}</CardText>
+          <div className='TasksListItem__CardBottom'>
+            <div className='TasksListItem__CardActions'>
+              <Button className='AppButton AppButton--Primary TasksListItem__Button' 
                       onClick={this.props.onView.bind(this, this.props.id)}>View</Button>
-              <Button className='AppButton AppButton--Secondary ProjectsListItem__Button' 
+              <Button className='AppButton AppButton--Secondary TasksListItem__Button' 
                       onClick={this.props.onEdit.bind(this, this.props.id)}>Edit</Button>
-              <Button className='AppButton AppButton--Danger ProjectsListItem__Button' 
+              <Button className='AppButton AppButton--Danger TasksListItem__Button' 
                       onClick={this.props.onDelete.bind(this, this.props.id)}>Delete</Button>
             </div>
           </div>
@@ -38,4 +38,4 @@ class ProjectsListItem extends React.Component {
   }
 }
 
-export default ProjectsListItem
+export default TasksListItem

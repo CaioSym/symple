@@ -1,34 +1,33 @@
 @value card-primary-color from '../../Colors.css';
 
-
-.ProjectsListItem__Card {
+.TasksListItem__Card {
   width: 18rem;
   margin: 5px;
   background-color: card-primary-color;
   position: relative;
 }
 
-.ProjectsListItem__CardTitle {
+.TasksListItem__CardTitle {
   max-height: 30px;
   height: 30px;
   overflow: hidden;
 }
 
-.ProjectsListItem__CardText {
+.TasksListItem__CardText {
   max-height: 100px;
   overflow: hidden;
 }
 
-.ProjectsListItem__Button {
+.TasksListItem__Button {
   margin-right: 3px
 }
 
-.ProjectsListItem__CardBottom{
+.TasksListItem__CardBottom{
   right: 0;
   bottom: 0;
   position: absolute;
 }
 
-.ProjectsListItem__CardActions {
+.TasksListItem__CardActions {
   padding: 3px;
 }

@@ -1,9 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Jumbotron, Button, Modal, ModalHeader,
- ModalBody, ModalFooter } from 'reactstrap';
+import { Jumbotron,
+         Button,
+         FormGroup,
+         InputGroup, 
+         InputGroupAddon,
+         InputGroupText,
+         Input,
+         Label,
+         Modal,
+         ModalHeader,
+         ModalBody,
+         ModalFooter } from 'reactstrap';
 
+import './ProjectsScreenView.css'
 import ProjectsList from '../../components/Project/ProjectsList'
 
 const renderModal = (props) => {
@@ -16,50 +27,75 @@ const renderModal = (props) => {
         {props.form.title}
       </ModalHeader>
       <ModalBody>
-        <label htmlFor="title">
-          Title:
-        </label>
-        <input
-          id="title"
-          type="text"
-          value={props.form.params.title || ""}
-          onChange={(e) => props.onProjectFormEditTite(e.target.value)}/>
-
-        <label htmlFor="description">
-          Description:
-        </label>
-        <input
-          id="description"
-          type="text"
-          value={props.form.params.description || ""}
-          onChange={(e) => props.onProjectFormEditDescription(e.target.value)}/>
+        <FormGroup>
+          <InputGroup>
+            <InputGroupAddon addonType="prepend">Title</InputGroupAddon>
+            <Input
+              id="title"
+              type="text"
+              placeholder="Title"
+              value={props.form.params.title || ""}
+              onChange={(e) => props.onProjectFormEditTite(e.target.value)}/>
+          </InputGroup>
+        </FormGroup>
+        <FormGroup>
+          <InputGroup>
+            <InputGroupAddon addonType="prepend">Description</InputGroupAddon>
+            <Input
+              id="description"
+              type="textarea"
+              placeholder="Description"
+              value={props.form.params.description || ""}
+              onChange={(e) => props.onProjectFormEditDescription(e.target.value)}/>            
+          </InputGroup>
+        </FormGroup>
       </ModalBody>
       <ModalFooter>
-        <Button color="primary" onClick={props.onProjectFormSubmit}>Save</Button>
+        <Button className='AppButton AppButton--Primary'
+                onClick={props.onProjectFormSubmit}>Save</Button>
         {' '}
-        <Button color="secondary" onClick={props.onProjectFormDismiss}>Cancel</Button>
+        <Button className='AppButton AppButton--Secondary'
+                onClick={props.onProjectFormDismiss}>Cancel</Button>
       </ModalFooter>
     </Modal>
+  )
+}
+
+const renderNewProjectButton = (props) => {
+  return (
+    <Button className='AppButton AppButton--Primary'  
+            onClick={props.onCreateProject}>
+      + Create a new project!
+    </Button>
   )
 }
 
 const ProjectsScreenView = (props) => {
   return (
     <div>
-      <h1>
-        Projects
-      </h1>
-      <hr />
-      <Jumbotron>
+      <Jumbotron className="ProjectsListContainer">
+
+        <div>
+          <h1>
+            Projects
+          </h1>
+
+          {renderNewProjectButton(props)}
+        </div>
+
+        <hr/>
+
         <ProjectsList projects={props.projects}
                       onViewProject={(pId) => props.onShowProject(pId)}
                       onEditProject={(pId) => props.onEditProject(pId)}
                       onDeleteProject={(pId) => props.onDeleteProject(pId)} />
 
-        <Button color='primary' 
-                onClick={props.onCreateProject}>
-          + Create a new project!
-        </Button>
+        <hr/>
+        
+        <div>
+          {renderNewProjectButton(props)}
+        </div>
+
       </Jumbotron>
       {renderModal(props)}
     </div>
