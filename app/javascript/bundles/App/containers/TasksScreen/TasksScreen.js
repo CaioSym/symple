@@ -34,6 +34,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {    
     onShowTask: (projectId, taskId) => {
+      alert("Not implemented. But it would show a nice modal...")
     },
     onEditTask: (projectId, taskId) => {
       dispatch(TaskScreeenActions.openUpdateForm(projectId, taskId))
