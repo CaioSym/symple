@@ -13,12 +13,14 @@
 /* Grayscales */
 @value platinum: #E7E5DF;
 @value light-gray: #D3D0CB;
+@value silver-chalice: #AFADA8;
 @value black-olive: #393E41;
 
 /* Theme */
 
 @value nav-bar-color: black-olive;
 @value background-primary-color: light-gray;
+@value background-secondary-color: silver-chalice;
 @value card-primary-color: platinum;
 
 @value button-primary-color: vergigris;
