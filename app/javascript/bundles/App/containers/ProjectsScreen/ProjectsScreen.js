@@ -27,8 +27,8 @@ const mapDispatchToProps = dispatch => {
     onShowProject: (projectId) => {
       dispatch(openTasksScreen(projectId))
     },
-    onEditProject: (project) => {
-      dispatch(ProjectScreeenActions.openUpdateForm(project))
+    onEditProject: (projectId) => {
+      dispatch(ProjectScreeenActions.openUpdateForm(projectId))
     },
     onDeleteProject: (projectId) => {
       dispatch(ProjectActions.deleteProject(projectId))

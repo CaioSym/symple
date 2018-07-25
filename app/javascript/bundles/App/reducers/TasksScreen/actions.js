@@ -24,13 +24,13 @@ const openForm = (formType, initialParams = {}) => {
   }
 }
 
-export function openCreateForm() {
-  return openForm(FormTypes.CREATE)
+export function openCreateForm(priority) {
+  return openForm(FormTypes.CREATE, { priority: priority, completed: false })
 }
 
-export function openUpdateForm(taskId) {
+export function openUpdateForm(projectId, taskId) {
   return function (dispatch, getState) {
-    let task = getState().tasks.find(p => p.id === taskId)
+    let task = getState().tasks[projectId].find(t => t.id === taskId)
     dispatch(openForm(FormTypes.EDIT, task))
     return Promise.resolve()
   }
@@ -43,6 +43,34 @@ export function setFormTitle(title) {
       payload: {
         params: {
           title: title
+        }
+      }
+    })
+    return Promise.resolve()
+  }
+}
+
+export function setFormPriority(priority) {
+  return function (dispatch, getState) {
+    dispatch({
+      type: ActionTypes.UPDATE_FORM,
+      payload: {
+        params: {
+          priority: priority
+        }
+      }
+    })
+    return Promise.resolve()
+  }
+}
+
+export function setFormCompleted(completed) {
+  return function (dispatch, getState) {
+    dispatch({
+      type: ActionTypes.UPDATE_FORM,
+      payload: {
+        params: {
+          completed: completed
         }
       }
     })
@@ -74,25 +102,25 @@ export function closeForm() {
   }
 }
 
-const taskActionForForm = (dispatch, form) =>  {
+const taskActionForForm = (dispatch, projectId, form) =>  {
   switch(form.type) {
     case FormTypes.CREATE:
-      dispatch(createTask(form.params))
+      dispatch(createTask(projectId, form.params))
       break
     case FormTypes.EDIT: 
-      dispatch(updateTask(form.params))
+      dispatch(updateTask(projectId, form.params))
       break
   }
   return Promise.resolve()
 }
 
-export function submitForm() {
+export function submitForm(projectId) {
   return function (dispatch, getState) {
     let form = getState().screens.tasks.form
 
     if (!form) { return; }
 
-    let taskAction = taskActionForForm(dispatch, form)
+    let taskAction = taskActionForForm(dispatch, projectId, form)
     return taskAction
       .then(done => dispatch(closeForm()))
       .catch(e => console.log(e))

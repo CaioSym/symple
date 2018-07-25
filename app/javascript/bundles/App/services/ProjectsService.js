@@ -72,7 +72,7 @@ export const createTask = (projectId, task) => {
 }
 
 export const updateTask = (projectId, task) => {
-  return fetchPost(`/api/projects/${projectId}/tasks/${task.id}`, task)
+  return fetchPut(`/api/projects/${projectId}/tasks/${task.id}`, task)
 }
 
 export const deleteTask = (projectId, taskId) => {

@@ -16,6 +16,8 @@ const mapFormParams = formParams => {
   return {
     id: formParams.id,
     title: formParams.title,
+    priority: formParams.priority || 1,
+    completed: formParams.completed || false,
     description: formParams.description,
   }
 }

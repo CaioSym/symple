@@ -34,6 +34,71 @@ const renderTaskList = (props, priority) => {
   )
 } 
 
+const renderModal = (props) => {
+  if (!props.form) { return null; }
+
+  return (
+    <Modal isOpen={props.form != null}
+           toggle={props.onTaskFormDismiss}>
+      <ModalHeader toggle={props.onTaskFormDismiss}>
+        {props.form.title}
+      </ModalHeader>
+      <ModalBody>
+        <FormGroup>
+          <InputGroup>
+            <InputGroupAddon addonType="prepend">Title</InputGroupAddon>
+            <Input
+              type="text"
+              placeholder="Title"
+              value={props.form.params.title || ""}
+              onChange={(e) => props.onTaskFormEditTite(e.target.value)}/>
+          </InputGroup>
+        </FormGroup>
+        <FormGroup>
+          <InputGroup>
+            <InputGroupAddon addonType="prepend">Priority</InputGroupAddon>
+            <Input type="select"
+                   placeholder="Priority"
+                   value={props.form.params.priority || 1}
+                   onChange={(e) => props.onTaskFormEditPriority(e.target.value)}>
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={4}>4</option>
+              <option value={5}>5</option>
+            </Input>
+          </InputGroup>
+        </FormGroup>
+        <FormGroup>
+          <Label for="completed">Completed</Label>          
+          <Input name='completed'
+                 type="checkbox"
+                 value={props.form.params.completed || 1}
+                 onChange={(e) => props.onTaskFormEditCompleted(e.target.value)}/>
+        </FormGroup>
+        <FormGroup>
+          <InputGroup>
+            <InputGroupAddon addonType="prepend">Description</InputGroupAddon>
+            <Input
+              type="textarea"
+              placeholder="Description"
+              value={props.form.params.description || ""}
+              onChange={(e) => props.onTaskFormEditDescription(e.target.value)}/>            
+          </InputGroup>
+        </FormGroup>
+      </ModalBody>
+      <ModalFooter>
+        <Button className='AppButton AppButton--Primary'
+                onClick={() => props.onTaskFormSubmit(props.projectId)}>Save</Button>
+        {' '}
+        <Button className='AppButton AppButton--Secondary'
+                onClick={props.onTaskFormDismiss}>Cancel</Button>
+      </ModalFooter>
+    </Modal>
+  )
+}
+
+
 const TasksScreenView = (props) => {
   console.log(props.tasks)
   return (
@@ -54,7 +119,7 @@ const TasksScreenView = (props) => {
 
         <hr/>
       </Jumbotron>
-      {/*renderModal(props)*/}
+      {renderModal(props)}
     </div>
   );
 }
@@ -70,6 +135,8 @@ TasksScreenView.propTypes = {
   onDeleteTask: PropTypes.func.isRequired,
   onCreateTask: PropTypes.func.isRequired,
   onTaskFormEditTite: PropTypes.func.isRequired,
+  onTaskFormEditPriority: PropTypes.func.isRequired,
+  onTaskFormEditCompleted: PropTypes.func.isRequired,
   onTaskFormEditDescription: PropTypes.func.isRequired,
   onTaskFormSubmit: PropTypes.func.isRequired,
   onTaskFormDismiss: PropTypes.func.isRequired

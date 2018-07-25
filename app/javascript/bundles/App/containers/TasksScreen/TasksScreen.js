@@ -35,23 +35,29 @@ const mapDispatchToProps = dispatch => {
   return {    
     onShowTask: (projectId, taskId) => {
     },
-    onEditTask: (projectId, task) => {
-      dispatch(TaskScreeenActions.openUpdateForm(projectId, task))
+    onEditTask: (projectId, taskId) => {
+      dispatch(TaskScreeenActions.openUpdateForm(projectId, taskId))
     },
     onDeleteTask: (projectId, taskId) => {
       dispatch(TaskActions.deleteTask(projectId, taskId))
     },
-    onCreateTask: (projectId, prority) => {
-      dispatch(TaskScreeenActions.openCreateForm())
+    onCreateTask: (projectId, priority) => {
+      dispatch(TaskScreeenActions.openCreateForm(priority))
     },
     onTaskFormEditTite: (title) => {
       dispatch(TaskScreeenActions.setFormTitle(title))
     },
+    onTaskFormEditPriority: (priority) => {
+      dispatch(TaskScreeenActions.setFormPriority(priority))
+    },
+    onTaskFormEditCompleted: (completed) => {
+      dispatch(TaskScreeenActions.setFormCompleted(completed))
+    },
     onTaskFormEditDescription: (description) => {
       dispatch(TaskScreeenActions.setFormDescription(description))
     },
-    onTaskFormSubmit: () => {
-      dispatch(TaskScreeenActions.submitForm())
+    onTaskFormSubmit: (projectId) => {
+      dispatch(TaskScreeenActions.submitForm(projectId))
     },
     onTaskFormDismiss: () => {
       dispatch(TaskScreeenActions.closeForm())
