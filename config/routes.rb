@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   scope '/api' do
-    resources :projects do 
-      resources :tasks
+    resources :projects, only: [:index, :create, :update, :destroy] do 
+      resources :tasks, only: [:index, :create, :update, :destroy]
     end
   end
   

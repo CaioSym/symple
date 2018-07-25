@@ -6,6 +6,17 @@ class TasksController < ApiController
     render json: tasks.to_json
   end
 
+  def destroy
+    project = Project.find_by(id: params[:project_id])
+    task = Task.find_by(project: project, id: params[:id], )
+    if task
+      Task.destroy(task.id)
+      render json: { message: "{}" }, status: :ok
+    else
+      render json: { code: 404 }
+    end
+  end
+
   private
 
   def task_params
