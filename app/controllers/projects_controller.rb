@@ -15,7 +15,7 @@ class ProjectsController < ApiController
   end
 
   def update
-    project = Project.where(user: current_user, id: params[:id]).first
+    project = Project.find_by(user: current_user, id: params[:id])
     if project
       project.update(project_params)
       render json: project.to_json
