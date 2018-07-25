@@ -1,24 +1,28 @@
-# README
+# Symple
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Symple is a very rudimentary tool for managing Projects and Tasks.
 
-Things you may want to cover:
+I'm using it to test how to best integrate React with Rails 
 
-* Ruby version
+You can find a running version here: https://csym-symple.herokuapp.com/
 
-* System dependencies
+## Install:
+```sh
+bundle install
+yarn install
+```
 
-* Configuration
+## First time setup:
+```sh
+bundle exec rails db:create db:migrate
+```
 
-* Database creation
+## Run
+```sh
+bundle exec rails s
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Test (DOES NOT CURRENTLY RUN ANY MEANINGFUL TESTS)
+```sh
+bundle exec rspec
+```
